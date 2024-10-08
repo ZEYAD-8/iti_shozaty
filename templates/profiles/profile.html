@@ -1,0 +1,51 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}
+    {{ profile.user.username }}'s Profile
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-image">
+            {% if profile.image %}
+                <img src="{{ profile.image.url }}" alt="Profile Image">
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <h1>{{ profile.user.username }}</h1>
+            <p><strong>Email:</strong> {{ profile.user.email }}</p>
+            <p><strong>Phone:</strong> {{ profile.phone }}</p>
+            <p><strong>Address:</strong> {{ profile.address }}</p>
+            <p><strong>Member Since:</strong> {{ profile.joined|date:"F d, Y" }}</p>
+            <a href="{% url 'update' %}" class="edit-btn">Edit Profile</a>
+        </div>
+    </div>
+
+    <div class="order-section">
+        <h2>Your Orders</h2>
+        {% if orders %}
+            <div class="order-list">
+                {% for order in orders %}
+                    <div class="order-card">
+                        <h3>Order #{{ order.id }} - {{ order.date|date:"F d, Y" }}</h3>
+                        <p><strong>Status:</strong> {{ order.status }}</p>
+                        <ul>
+                            {% for shoe in order.shoes.all %}
+                                <li>{{ shoe.name }} - ${{ shoe.price }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You haven't placed any orders yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}
+    Edit Profile - Shozaty
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="profile-update-container">
+        <h1>Edit Your Profile</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                {{ form.phone.label_tag }} 
+                {{ form.phone }}
+                {{ form.phone.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.address.label_tag }} 
+                {{ form.address }}
+                {{ form.address.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.image.label_tag }} 
+                {{ form.image }}
+                {{ form.image.errors }}
+            </div>
+            <button type="submit" class="btn-submit">Update Profile</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<nav>
+    <div class="navbar-container">
+        <a href="{% url 'home' %}" class="brand">Shozaty</a>
+        
+        <ul class="navbar-links">
+            <li><a href="{% url 'all_shoes' %}">All Shoes</a></li>
+            <li><a href="{% url 'all_categories' %}">All Categories</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            {% endif %}
+        </ul>
+
+        <div class="navbar-user">
+            {% if user.is_authenticated %}
+                <span>Hi, {{ user.username }}</span>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Sign In</a> or
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

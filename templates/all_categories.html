@@ -1,0 +1,28 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}
+    All Categories - Shozaty
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/all_categories.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+        <h1>All Categories</h1>
+        <p>Explore our diverse range of categories.</p>
+    </div>
+
+    <div class="container_categories">
+        {% for category, num_shoes in categories.items %}
+        <div class="category-card">
+            <h2>{{ category.name }}</h2>
+            <p class="description">{{ category.description }}</p>
+            <p class="num-shoes">{{ num_shoes }} shoes available</p>
+            <a href="{% url 'category_shoes' category.id %}" class="view-btn">View Shoes →</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

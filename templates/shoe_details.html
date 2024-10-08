@@ -1,0 +1,32 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}
+    {{ shoe.name }} - Shozaty
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/shoe_details.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+        <h1>{{ shoe.name }}</h1>
+        <p>Discover the details of this shoe and make it yours!</p>
+    </div>
+
+    <div class="container_shoe_details">
+        <div class="shoe_image">
+            <img src="{{ shoe.image.url }}" alt="{{ shoe.name }} Image">
+        </div>
+        <div class="shoe_info">
+            <h2>{{ shoe.name }}</h2>
+            <p class="price">${{ shoe.price }}</p>
+            <p class="description">{{ shoe.description }}</p>
+            <p class="stock">Stock left: {{ shoe.stock }}</p>
+            <p class="category">Category: {{ shoe.category.name }}</p>
+            <a href="{% url 'order' shoe.id %}" class="order-btn">Order Now</a>
+            <a href="{% url 'all_shoes' %}" class="back-btn">Back to All Shoes</a>
+        </div>
+    </div>
+{% endblock %}

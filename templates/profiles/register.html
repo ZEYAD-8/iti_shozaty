@@ -1,0 +1,64 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}
+    Register - Shozaty
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="auth-container">
+        <h1>Create an Account</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" value="{{ form.username.value|default_if_none:'' }}">
+                <div class="form-error">{{ form.username.errors }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" id="email" value="{{ form.email.value|default_if_none:'' }}">
+                <div class="form-error">{{ form.email.errors }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" class="form-control" id="phone" value="{{ form.phone.value|default_if_none:'' }}">
+                <div class="form-error">{{ form.phone.errors }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea name="address" class="form-control" id="address">{{ form.address.value|default_if_none:'' }}</textarea>
+                <div class="form-error">{{ form.address.errors }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Profile Image</label>
+                <input type="file" name="image" class="form-control" id="image">
+                <div class="form-error">{{ form.image.errors }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" name="password1" class="form-control" id="password1">
+                <div class="form-error">{{ form.password1.errors }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" name="password2" class="form-control" id="password2">
+                <div class="form-error">{{ form.password2.errors }}</div>
+            </div>
+
+            <button type="submit" class="auth-btn">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+{% endblock %}

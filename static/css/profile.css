@@ -1,0 +1,96 @@
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.profile-info p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+
+.edit-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.order-section {
+    margin-top: 40px;
+}
+
+.order-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.order-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.order-card p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.order-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.order-card ul li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}

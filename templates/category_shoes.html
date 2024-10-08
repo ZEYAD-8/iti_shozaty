@@ -1,0 +1,36 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}
+    {{category_name}} - Shozaty
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/category_shoes.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+        <h1>Shoes in {{ category_name }}</h1>
+        <p>Explore the best shoes available!</p>
+    </div>
+
+    <div class="container_shoes">
+        {% if shoes %}
+        <div class="shoe-grid">
+            {% for shoe in shoes %}
+            <div class="shoe-card">
+                <img src="{{ shoe.image.url }}" alt="{{ shoe.name }} Image">
+                <div class="shoe-details">
+                    <h3>{{ shoe.name }}</h3>
+                    <p class="price">${{ shoe.price }}</p>
+                    <a href="{% url 'shoe_details' shoe.id %}" class="details-btn">View Details →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No shoes available in this category.</p>
+        {% endif %}
+    </div>
+{% endblock %}

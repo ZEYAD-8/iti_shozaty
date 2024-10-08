@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Shozaty{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/basics.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    {% include 'basics/partials/navbar.html' %}
+    <div class="container_basics">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% include 'basics/partials/footer.html' %}
+</body>
+</html>
